@@ -7,7 +7,7 @@ const data = await fetch('/osszesffi.txt')
 const text = await data.text()
 const names = text
   .split('\n')
-  .map((name, index) => ({ id: index + 1, name: name.trim() }))
+  .map((name, index) => ({ id: index, name: name.trim() }))
 
 type BabyName = {
   id: number
@@ -47,7 +47,7 @@ export default function BabyNameSelector() {
   )
 
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen">
       <div className="p-6 border-b">
         <h1 className="text-3xl font-bold mb-4 text-center">
           Baby Name Selector
@@ -97,8 +97,8 @@ export default function BabyNameSelector() {
           </div>
         </div>
       </div>
-      <div className="flex">
-        <div className="overflow-y-auto p-4 max-h-svh grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 sm:basis-2/3">
+      <div className="flex h-full">
+        <div className="overflow-y-auto p-4 max-h-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 sm:basis-2/3">
           {filteredBabyNames.map((baby) => (
             <div
               key={baby.id}
